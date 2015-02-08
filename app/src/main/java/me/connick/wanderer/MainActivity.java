@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.net.MalformedURLException;
+
+import me.connick.wanderer.networking.ApiRequestTask;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -12,6 +16,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new ApiRequestTask().execute("http://192.168.91.135:8000");
+
     }
 
 
