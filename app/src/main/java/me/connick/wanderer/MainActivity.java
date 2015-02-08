@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new ApiRequestTask().execute("http://192.168.91.135:8000");
+        new ApiRequestTask().execute("http://192.168.91.135:8000/api/locations/?format=json");
 
     }
 

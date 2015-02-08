@@ -5,6 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,10 +29,10 @@ public class Location {
     public static class Perspective {
         public final String photoURL, desc, author;
         public final Date date;
-        public Perspective(String photoURL, String desc, String author, String date){
+        public Perspective(String photoURL, String desc, String author, String date) throws ParseException {
             this.photoURL = photoURL;
             this.desc = desc;
-            this.date = new Date(date);
+            this.date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(date);
             this.author = author;
         }
     }
@@ -45,14 +47,14 @@ public class Location {
         }
     }
 
-    public static Location parse(JSONObject obj) throws JSONException {
+    public static Location parse(JSONObject obj) throws Exception {
         Location loc = new Location(obj.getString("latitude"), obj.getString("longitude"), obj.getString("address"));
         JSONArray ps = obj.getJSONArray("perspective_set");
         for (int i = 0; i < ps.length(); i++) {
             JSONObject pObj = ps.getJSONObject(i);
             loc.perspectives.add(new Perspective(pObj.getString("photo"), pObj.getString("description"), pObj.getString("author"), pObj.getString("date")));
         }
-        JSONArray rs = obj.getJSONArray("perspective_set");
+        JSONArray rs = obj.getJSONArray("rating_set");
         for (int i = 0; i < rs.length(); i++) {
             JSONObject rObj = rs.getJSONObject(i);
             loc.ratings.add(new Rating(rObj.getInt("rating"), rObj.getString("author")));
