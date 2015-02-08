@@ -35,7 +35,7 @@
             android:layout_weight=".5"
             android:background="#e27d2b"
             android:textColor="@android:color/white"
-            android:onClick="contClickedL"
+            android:onClick="contClicked"
             />
         </LinearLayout>
         <LinearLayout
