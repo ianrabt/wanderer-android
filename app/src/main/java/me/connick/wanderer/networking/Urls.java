@@ -16,4 +16,12 @@ public class Urls {
     public static String getLocationURL(int id) {
         return URL_BASE + "locations/" + id + "/?format=json";
     }
+
+    public static String getRatingsURL() {
+        return URL_BASE + "ratings/";
+    }
+
+    public static String getPerspectivesURL() {
+        return URL_BASE + "perspectives/";
+    }
 }

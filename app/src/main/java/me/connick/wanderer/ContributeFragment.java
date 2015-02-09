@@ -1,75 +1,56 @@
 package me.connick.wanderer;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import me.connick.wanderer.networking.Location;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import me.connick.wanderer.networking.ApiRequestTaskSet;
-import me.connick.wanderer.networking.Urls;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PhotosFragment.OnFragmentInteractionListener} interface
+ * {@link ContributeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PhotosFragment#newInstance} factory method to
+ * Use the {@link ContributeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PhotosFragment extends Fragment {
+public class ContributeFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // TODO: Rename and change types of parameters
 
     private OnFragmentInteractionListener mListener;
 
-    public static PhotosFragment newInstance() {
-        PhotosFragment fragment = new PhotosFragment();
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @return A new instance of fragment ContributeFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static ContributeFragment newInstance() {
+        ContributeFragment fragment = new ContributeFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
         return fragment;
     }
 
-    public PhotosFragment() {
+    public ContributeFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
-
-        new ApiRequestTaskSet(new ApiRequestTaskSet.LocationSetReceiver() {
-            @Override
-            public void receive(Set<me.connick.wanderer.networking.Location> locations) {
-                Random rand = new Random();
-                List<Location.Perspective> pList = new ArrayList<Location.Perspective>();
-                for (Location loc : locations)
-                    for (Location.Perspective p : loc.perspectives)
-                        pList.add(rand.nextInt(pList.size() + 1), p);
-                for (Location.Perspective p : pList) {
-                    ImageView img = new ImageView(getActivity().getApplicationContext());
-                    img.setImageBitmap(p.photo);
-                    ((LinearLayout) getView()).addView(img);
-                }
-            }
-        }).execute(Urls.getLocationsURL());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_photos, container, false);
+        return inflater.inflate(R.layout.fragment_contribute, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -110,5 +91,4 @@ public class PhotosFragment extends Fragment {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 }

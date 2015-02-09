@@ -21,23 +21,24 @@
         android:layout_alignParentTop="true">
 
         <Button
-            android:id="@+id/disc"
+            android:id="@+id/discButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:background="#a35a1f"
+            android:onClick="_disc"
             android:text="@string/disc"
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/cont"
+            android:id="@+id/contButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:background="#e27d2b"
-            android:onClick="contClicked"
+            android:onClick="_cont"
             android:text="@string/cont"
             android:textColor="@android:color/white" />
     </LinearLayout>

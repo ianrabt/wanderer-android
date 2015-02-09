@@ -7,6 +7,6 @@
 
     <!-- ActionBar styles -->
     <style name="OrangeActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">#A35A1F</item>
+        <item name="android:background">#ffa35a1f</item>
     </style>
 </resources>
